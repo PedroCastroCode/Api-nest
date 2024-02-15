@@ -1,7 +1,7 @@
-import { Marca } from 'src/marca/entities/marca.entity';
-import { Proprietario } from 'src/proprietario/entities/proprietario.entity';
-import { User } from 'src/users/entities/user.entity';
-import { Veiculo } from 'src/veiculos/entities/veiculo.entity';
+import { Marca } from 'src/tables/marca/entities/marca.entity';
+import { Proprietario } from 'src/tables/proprietario/entities/proprietario.entity';
+import { User } from 'src/tables/users/entities/user.entity';
+import { Veiculo } from 'src/tables/veiculos/entities/veiculo.entity';
 import { DataSource, DataSourceOptions } from 'typeorm';
 
 export const conn: DataSourceOptions = {

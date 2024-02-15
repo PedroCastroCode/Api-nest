@@ -1,19 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { VeiculosModule } from './veiculos/veiculos.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { MarcaModule } from './marca/marca.module';
-import { Veiculo } from './veiculos/entities/veiculo.entity';
-import { Marca } from './marca/entities/marca.entity';
-import { UsersModule } from './users/users.module';
-import { User } from './users/entities/user.entity';
-import { ProprietarioModule } from './proprietario/proprietario.module';
-import { Proprietario } from './proprietario/entities/proprietario.entity';
 import { conn } from './db/conn';
+import { VeiculosModule } from './tables/veiculos/veiculos.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MarcaModule } from './tables/marca/marca.module';
+import { UserModule } from './tables/users/users.module';
+import { ProprietarioModule } from './tables/proprietario/proprietario.module';
 
 @Module({
-  imports: [VeiculosModule, TypeOrmModule.forRoot(conn), MarcaModule, UsersModule, ProprietarioModule],
+  imports: [
+    TypeOrmModule.forRoot(conn),
+    VeiculosModule,
+    MarcaModule,
+    UserModule,
+    ProprietarioModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
