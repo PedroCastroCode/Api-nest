@@ -29,7 +29,7 @@ export class Veiculo extends Basic {
   cor: string;
 
   static create(id_marca: number, placa: string, cor: string, id?: number) {
-    this.Validate({ id_marca, placa, cor });
+    this.Validate({ id_marca, placa, cor, id });
     return new Veiculo(id_marca, placa, cor);
   }
 
