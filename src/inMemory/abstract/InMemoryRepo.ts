@@ -10,6 +10,7 @@ export abstract class InMemoryRepo<T extends Basic> implements IRepository<T> {
     this.items.push(item);
     return item;
   }
+
   async update(item: T): Promise<T> {
     let foundItem = this.items.findIndex((i) => i.id === item.id);
     if (foundItem >= 0) {

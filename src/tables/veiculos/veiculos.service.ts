@@ -42,4 +42,8 @@ export class VeiculosService {
     await this.veiculosRepo.Remove(id);
     return `veiculo ${id} removido`;
   }
+
+  testConnection(message) {
+    return message;
+  }
 }

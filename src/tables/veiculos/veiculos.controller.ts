@@ -31,4 +31,10 @@ export class VeiculosController {
   remove(@Param('id') id: string) {
     return this.veiculosService.remove(+id);
   }
+
+  @Get()
+  testConnection() {
+    const message = 'Conectado com sucesso!';
+    console.log(message);
+  }
 }

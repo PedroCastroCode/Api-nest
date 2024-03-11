@@ -17,7 +17,7 @@ export class Marca extends Basic {
   nome: string;
 
   static create(nome: string, id?: number) {
-    this.Validate({ nome });
+    this.Validate({ nome, id });
     return new Marca(nome, id);
   }
 

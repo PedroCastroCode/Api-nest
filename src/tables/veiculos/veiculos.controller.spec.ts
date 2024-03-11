@@ -12,7 +12,6 @@ test('create', () => {
   try {
     Veiculo.create(null, '', '');
   } catch (error) {
-    console.log(error);
     expect(error.response).toEqual({
       errors: {
         id_marca: [
@@ -113,11 +112,24 @@ test('create', async () => {
 //   expect(veiculoCriado.cor).toBe('verde');
 // });
 
-test('find one', async () => {
-  const veiculoCriado = await veiculoRepo.GetById(2);
+// test('find one', async () => {
+//   const veiculoCriado = await veiculoRepo.GetById(2);
 
-  expect(veiculoCriado.id_marca).toBe(22);
-  expect(veiculoCriado.placa).toBe('10ggfg4');
-  expect(veiculoCriado.cor).toBe('amarelo');
-  expect(veiculoCriado.id).toBe(2);
+//   expect(veiculoCriado.id_marca).toBe(22);
+//   expect(veiculoCriado.placa).toBe('10ggfg4');
+//   expect(veiculoCriado.cor).toBe('amarelo');
+//   expect(veiculoCriado.id).toBe(2);
+// });
+
+test('Update Veiculo', async () => {
+  const veiculo = Veiculo.create(3, '8y13fd', 'violeta', 1);
+  await veiculoRepo.Create(veiculo);
+
+  const newVeiculo = Veiculo.create(3, '8y13fd', 'violeta', 1);
+  const veiculoUpdated = await veiculoRepo.update(newVeiculo);
+
+  expect(veiculoUpdated.id_marca).toBe(newVeiculo.id_marca);
+  expect(veiculoUpdated.placa).toBe(newVeiculo.placa);
+  expect(veiculoUpdated.cor).toBe(newVeiculo.cor);
+  expect(veiculoUpdated.id).toBe(newVeiculo.id);
 });

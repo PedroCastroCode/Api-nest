@@ -45,8 +45,8 @@ export class Proprietario extends Basic {
     id_user: number,
     id?: number,
   ) {
-    this.Validate({ nome_completo, cpf, telefone, id_user });
-    return new Proprietario(nome_completo, cpf, telefone, id_user);
+    this.Validate({ nome_completo, cpf, telefone, id_user, id });
+    return new Proprietario(nome_completo, cpf, telefone, id_user, id);
   }
 
   static Validate(CreateProprietarioDto): void {
