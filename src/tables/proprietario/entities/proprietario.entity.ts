@@ -3,6 +3,8 @@ import UserValidatorFactory from 'src/tables/users/validators/users.validator';
 import { Basic } from 'src/utils/basic';
 import HttpError from 'src/utils/errors/http-errors';
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { CreateProprietarioDto } from '../dto/create-proprietario.dto';
+import ProprietarioValidatorFactory from '../validators/proprietario.validator';
 
 @Entity('proprietario')
 export class Proprietario extends Basic {
@@ -50,7 +52,7 @@ export class Proprietario extends Basic {
   }
 
   static Validate(CreateProprietarioDto): void {
-    const validator = UserValidatorFactory.Create();
+    const validator = ProprietarioValidatorFactory.Create();
     validator.Validate(CreateProprietarioDto);
     if (validator.errors) {
       new HttpError({ errors: validator.errors }).BadRequest();

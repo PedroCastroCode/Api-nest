@@ -35,7 +35,6 @@ export class ProprietarioValidator extends ClassValidatorFields<ProprietarioRule
     return super.validate(new ProprietarioRules(data));
   }
 }
-
 export default class ProprietarioValidatorFactory {
   static Create() {
     return new ProprietarioValidator();

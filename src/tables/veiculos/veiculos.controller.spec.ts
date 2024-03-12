@@ -133,3 +133,17 @@ test('Update Veiculo', async () => {
   expect(veiculoUpdated.cor).toBe(newVeiculo.cor);
   expect(veiculoUpdated.id).toBe(newVeiculo.id);
 });
+
+test('trying create with a empty field', () => {
+  expect(() => Veiculo.create(21, 'placadocarro', '')).toThrow('Http Exception');
+  try {
+    Veiculo.create(21, 'placadocarro', '');
+  } catch (error) {
+    console.log(error);
+    expect(error.response).toEqual({
+      errors: {
+        cor: ['cor should not be empty'],
+      },
+    });
+  }
+});
