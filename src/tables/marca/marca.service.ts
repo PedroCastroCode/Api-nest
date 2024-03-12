@@ -29,7 +29,6 @@ export class MarcaService {
 
   async remove(id: number) {
     await this.marcaRepo.Remove(id);
-
     return `Marca com id ${id} Deletado`;
   }
 }

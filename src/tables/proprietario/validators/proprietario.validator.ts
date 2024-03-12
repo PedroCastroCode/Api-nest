@@ -1,5 +1,4 @@
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
-import { User } from 'src/tables/users/entities/user.entity';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { IsCPF } from 'src/utils/extraValidations/IsCPF';
 import { CreateProprietarioDto } from '../dto/create-proprietario.dto';
 import { Basic } from 'src/utils/basic';
@@ -16,13 +15,6 @@ export class ProprietarioRules extends Basic {
 
   @IsNotEmpty()
   telefone: string;
-
-  @IsNotEmpty()
-  user: User;
-
-  @IsNotEmpty()
-  @IsInt()
-  id_user: number;
 
   constructor(data: CreateProprietarioDto) {
     super();

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
-import { UsersController } from './users.controller';
-import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
+import { UsersController } from './users.controller';
+import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
 import { UserTypeOrmRepository } from './Repositorio/User.repository';
 import { IUserRepository } from './Repositorio/iUser.repository';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -20,9 +20,9 @@ import { IUserRepository } from './Repositorio/iUser.repository';
     },
     {
       provide: UsersService,
-      useFactory: (userRepo: IUserRepository) => new UsersService(userRepo),
+      useFactory: (UserRepo: IUserRepository) => new UsersService(UserRepo),
       inject: [UserTypeOrmRepository],
     },
   ],
 })
-export class UserModule {}
+export class UsersModule {}

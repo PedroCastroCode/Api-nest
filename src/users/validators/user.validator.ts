@@ -1,19 +1,24 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { Basic } from 'src/utils/basic';
-import { CreateUserDto } from '../dto/create-user.dto';
 import { ClassValidatorFields } from 'src/Abstractions/class-validator-fields';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 export class UserRules extends Basic {
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'username is required' })
   username: string;
 
-  @IsNotEmpty()
   @IsString()
+  @IsNotEmpty({ message: 'password is required' })
   password: string;
 
-  @IsNotEmpty()
+  @IsEmail()
+  @IsNotEmpty({ message: 'email is required' })
   email: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'cpf is required' })
+  cpf: string;
 
   constructor(data: CreateUserDto) {
     super();

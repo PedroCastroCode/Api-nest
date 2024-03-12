@@ -1,5 +1,3 @@
-import { User } from 'src/tables/users/entities/user.entity';
-
 export class UpdateProprietarioDto {
   id: number;
 
@@ -8,8 +6,4 @@ export class UpdateProprietarioDto {
   cpf: string;
 
   telefone: string;
-
-  id_user: number;
-
-  user: User;
 }

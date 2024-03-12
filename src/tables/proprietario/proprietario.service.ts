@@ -9,7 +9,9 @@ export class ProprietarioService {
   constructor(private readonly proprietarioRepo: iProprietarioRepository) {}
 
   async create(createProprietarioDto: CreateProprietarioDto) {
-    const newProprietario = await this.proprietarioRepo.Create(createProprietarioDto);
+    const newProprietario = await this.proprietarioRepo.Create(
+      createProprietarioDto,
+    );
     return await this.proprietarioRepo.Create(newProprietario);
   }
 
@@ -27,7 +29,6 @@ export class ProprietarioService {
       updateProprietarioDto.nome_completo,
       updateProprietarioDto.cpf,
       updateProprietarioDto.telefone,
-      updateProprietarioDto.id_user,
       id,
     );
     await this.proprietarioRepo.update(newProprietario);

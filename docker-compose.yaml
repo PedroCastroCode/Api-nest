@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    container_name: nest-api
+    restart: always
+    environment:
+      - NODE_ENV=development
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: postgres_default

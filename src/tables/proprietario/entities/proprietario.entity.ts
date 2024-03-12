@@ -1,25 +1,15 @@
-import { User } from 'src/tables/users/entities/user.entity';
-import UserValidatorFactory from 'src/tables/users/validators/users.validator';
 import { Basic } from 'src/utils/basic';
 import HttpError from 'src/utils/errors/http-errors';
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { CreateProprietarioDto } from '../dto/create-proprietario.dto';
+import { Column, Entity } from 'typeorm';
 import ProprietarioValidatorFactory from '../validators/proprietario.validator';
 
 @Entity('proprietario')
 export class Proprietario extends Basic {
-  private constructor(
-    nome_completo: string,
-    cpf: string,
-    telefone: string,
-    id_user: number,
-    id?: number,
-  ) {
+  private constructor(nome_completo: string, cpf: string, telefone: string, id?: number) {
     super();
     this.nome_completo = nome_completo;
     this.cpf = cpf;
     this.telefone = telefone;
-    this.id_user = id_user;
     if (id) {
       this.id = id;
     }
@@ -34,21 +24,9 @@ export class Proprietario extends Basic {
   @Column()
   telefone: string;
 
-  @OneToOne(() => User)
-  @JoinColumn({ name: 'id_user' })
-  user: User;
-  @Column()
-  id_user: number;
-
-  static create(
-    nome_completo: string,
-    cpf: string,
-    telefone: string,
-    id_user: number,
-    id?: number,
-  ) {
-    this.Validate({ nome_completo, cpf, telefone, id_user, id });
-    return new Proprietario(nome_completo, cpf, telefone, id_user, id);
+  static create(nome_completo: string, cpf: string, telefone: string, id?: number) {
+    this.Validate({ nome_completo, cpf, telefone, id });
+    return new Proprietario(nome_completo, cpf, telefone, id);
   }
 
   static Validate(CreateProprietarioDto): void {

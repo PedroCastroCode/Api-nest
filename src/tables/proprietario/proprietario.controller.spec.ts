@@ -7,9 +7,9 @@ const propRepo = new ProprietarioInMemoryRepo();
 const propService = new ProprietarioService(propRepo);
 
 test('should first create Prop error message', async () => {
-  expect(() => Proprietario.create('', '', '', null, null)).toThrow('Http Exception');
+  expect(() => Proprietario.create('', '', '', null)).toThrow('Http Exception');
   try {
-    Proprietario.create('', '', '', null, null);
+    Proprietario.create('', '', '', null);
   } catch (error) {
     // console.log(error);
     expect(error.response).toEqual({
@@ -26,17 +26,15 @@ test('Simple Create Proprietario', async () => {
     nome_completo: 'Pedro botelho',
     cpf: '13391964685',
     telefone: '998523415',
-    id_user: 1,
   } as CreateProprietarioDto);
   const propFind = await propRepo.GetById(1);
 
   expect(propFind.nome_completo).toBe('Pedro botelho');
   expect(propFind.cpf).toBe('13391964685');
   expect(propFind.telefone).toBe('998523415');
-  expect(propFind.id_user).toBe(1);
 });
 test('find one', async () => {
-  const prop = Proprietario.create('Pedro', '13391964685', '998523415', 3, 5);
+  const prop = Proprietario.create('Pedro', '13391964685', '998523415', 3);
   propRepo.Create(prop);
   const proprietarioFound = await propRepo.GetById(prop.id);
 
@@ -44,7 +42,6 @@ test('find one', async () => {
   expect(proprietarioFound.nome_completo).toBe('Pedro');
   expect(proprietarioFound.cpf).toBe('13391964685');
   expect(proprietarioFound.telefone).toBe('998523415');
-  expect(proprietarioFound.id_user).toBe(1);
   expect(proprietarioFound.id).toBe(1);
 });
 
@@ -53,20 +50,18 @@ test('Simple Create Proprietario', async () => {
     nome_completo: 'Pedro botelho',
     cpf: '13391964685',
     telefone: '998523415',
-    id_user: 1,
   } as CreateProprietarioDto);
   const propFind = await propRepo.GetById(1);
 
   expect(propFind.nome_completo).toBe('Pedro botelho');
   expect(propFind.cpf).toBe('13391964685');
   expect(propFind.telefone).toBe('998523415');
-  expect(propFind.id_user).toBe(1);
 });
 
 test('find All', async () => {
   const propsData = [
-    { nome_completo: 'Pedro botelho', cpf: '13391964685', telefone: '998523415', id_user: 1 },
-    { nome_completo: 'joao Carlossss', cpf: '13391964685', telefone: '998523415', id_user: 2 },
+    { nome_completo: 'Pedro botelho', cpf: '13391964685', telefone: '998523415' },
+    { nome_completo: 'joao Carlossss', cpf: '13391964685', telefone: '998523415' },
   ];
 
   for (let index = 0; index < propsData.length; index++) {
@@ -74,7 +69,6 @@ test('find All', async () => {
       propsData[index].nome_completo,
       propsData[index].cpf,
       propsData[index].telefone,
-      propsData[index].id_user,
     );
     await propRepo.Create(prop1);
   }
@@ -86,7 +80,6 @@ test('find All', async () => {
     expect(element.nome_completo).toEqual(propsData[index].nome_completo);
     expect(element.cpf).toEqual(propsData[index].cpf);
     expect(element.telefone).toEqual(propsData[index].telefone);
-    expect(element.id_user).toEqual(propsData[index].id_user);
   }
 });
 
