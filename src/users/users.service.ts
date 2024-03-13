@@ -3,14 +3,16 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserRepository } from './Repositorio/iUser.repository';
 import { User } from './entities/user.entity';
+import { hash } from 'bcrypt';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly userRepo: IUserRepository) {}
   async create(createUserDto: CreateUserDto) {
+    const hashedPassword = await hash(createUserDto.password, 8);
     const newUser = User.create(
       createUserDto.username,
-      createUserDto.password,
+      hashedPassword,
       createUserDto.email,
       createUserDto.cpf,
     );

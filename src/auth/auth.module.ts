@@ -7,6 +7,8 @@ import { UserTypeOrmRepository } from 'src/users/Repositorio/User.repository';
 import { User } from 'src/users/entities/user.entity';
 import { DataSource } from 'typeorm';
 import { getDataSourceToken } from '@nestjs/typeorm';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth.guard';
 
 @Module({
   imports: [
@@ -28,6 +30,10 @@ import { getDataSourceToken } from '@nestjs/typeorm';
       provide: 'IUserRepository',
       useClass: UserTypeOrmRepository,
     },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
     AuthService,
   ],
   exports: [AuthService],
