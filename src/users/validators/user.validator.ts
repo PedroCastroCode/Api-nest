@@ -2,6 +2,7 @@ import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { Basic } from 'src/utils/basic';
 import { ClassValidatorFields } from 'src/Abstractions/class-validator-fields';
 import { CreateUserDto } from '../dto/create-user.dto';
+import { IsCPF } from 'src/utils/extraValidations/IsCPF';
 
 export class UserRules extends Basic {
   @IsString()
@@ -18,6 +19,7 @@ export class UserRules extends Basic {
 
   @IsString()
   @IsNotEmpty({ message: 'cpf is required' })
+  @IsCPF()
   cpf: string;
 
   constructor(data: CreateUserDto) {

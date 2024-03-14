@@ -8,6 +8,14 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  app.enableCors({
+    origin: true, // Permitir todas as origens
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Permitir todos os métodos
+    credentials: true, // Permitir credenciais de autenticação (cookies, cabeçalhos de autorização, etc.)
+    preflightContinue: false, // Desativar a resposta a requisições OPTIONS pré-voo
+    optionsSuccessStatus: 204, // Definir o status de sucesso para 204
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')

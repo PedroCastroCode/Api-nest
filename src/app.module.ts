@@ -8,6 +8,7 @@ import { MarcaModule } from './tables/marca/marca.module';
 import { ProprietarioModule } from './tables/proprietario/proprietario.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { EstoqueModule } from './tables/estoque/estoque.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsersModule } from './users/users.module';
     MarcaModule,
     UsersModule,
     ProprietarioModule,
+    EstoqueModule,
     AuthModule,
   ],
   controllers: [AppController],
