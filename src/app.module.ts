@@ -9,6 +9,7 @@ import { ProprietarioModule } from './tables/proprietario/proprietario.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { EstoqueModule } from './tables/estoque/estoque.module';
+import { ProjetoModule } from './tables/projetos/projetos.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { EstoqueModule } from './tables/estoque/estoque.module';
     ProprietarioModule,
     EstoqueModule,
     AuthModule,
+    ProjetoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

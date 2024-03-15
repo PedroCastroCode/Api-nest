@@ -1,5 +1,3 @@
-import { MarcaInMemoryRepo } from 'src/inMemory/inMemory-marca';
-import { MarcaService } from '../marca/marca.service';
 import { Estoque } from './entities/estoque.entity';
 import { EstoqueInMemoryRepo } from 'src/inMemory/inMemory-estoque';
 import { EstoqueService } from './estoque.service';

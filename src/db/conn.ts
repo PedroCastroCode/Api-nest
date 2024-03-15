@@ -1,5 +1,6 @@
 import { Estoque } from 'src/tables/estoque/entities/estoque.entity';
 import { Marca } from 'src/tables/marca/entities/marca.entity';
+import { Projeto } from 'src/tables/projetos/entities/projeto.entity';
 import { Proprietario } from 'src/tables/proprietario/entities/proprietario.entity';
 import { Veiculo } from 'src/tables/veiculos/entities/veiculo.entity';
 import { User } from 'src/users/entities/user.entity';
@@ -12,7 +13,7 @@ export const conn: DataSourceOptions = {
   username: 'postgres',
   password: 'postgres',
   database: 'crud2',
-  entities: [Veiculo, Marca, User, Proprietario, Estoque],
+  entities: [Veiculo, Marca, User, Proprietario, Estoque, Projeto],
   migrations: ['dist/migrations/*.js'],
   synchronize: true,
   logging: true,
