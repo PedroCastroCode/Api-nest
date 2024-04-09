@@ -6,11 +6,22 @@ import HttpError from 'src/utils/errors/http-errors';
 
 @Entity('veiculo')
 export class Veiculo extends Basic {
-  private constructor(id_marca: number, placa: string, cor: string, id?: number) {
+  private constructor(
+    id_marca: number,
+    placa: string,
+    cor: string,
+    preco: number,
+    anoFabricacao: Date,
+    km: number,
+    id?: number,
+  ) {
     super();
     this.id_marca = id_marca;
     this.placa = placa;
     this.cor = cor;
+    this.preco = preco;
+    this.anoFabricacao = anoFabricacao;
+    this.km = km;
     if (id) {
       this.id = id;
     }
@@ -28,9 +39,26 @@ export class Veiculo extends Basic {
   @Column()
   cor: string;
 
-  static create(id_marca: number, placa: string, cor: string, id?: number) {
-    this.Validate({ id_marca, placa, cor, id });
-    return new Veiculo(id_marca, placa, cor, id);
+  @Column()
+  preco: number;
+
+  @Column()
+  anoFabricacao: Date;
+
+  @Column()
+  km: number;
+
+  static create(
+    id_marca: number,
+    placa: string,
+    cor: string,
+    preco: number,
+    anoFabricacao: Date,
+    km: number,
+    id?: number,
+  ) {
+    this.Validate({ id_marca, placa, cor, preco, anoFabricacao, km, id });
+    return new Veiculo(id_marca, placa, cor, preco, anoFabricacao, km, id);
   }
 
   static Validate(CreateVeiculoDto): void {

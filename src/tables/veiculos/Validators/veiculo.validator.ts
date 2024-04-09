@@ -15,6 +15,17 @@ export class VeiculoRules extends Basic {
   @IsString()
   cor: string;
 
+  @IsNotEmpty()
+  @IsString()
+  preco: number;
+
+  @IsNotEmpty()
+  anoFabricacao: string;
+
+  // @IsNotEmpty()
+  // @IsNumber()
+  // km: number;
+
   constructor(data: CreateVeiculoDto) {
     super();
     Object.assign(this, data);

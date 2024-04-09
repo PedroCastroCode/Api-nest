@@ -44,6 +44,6 @@ export class UsersService {
   }
 
   async getUsername(username: string) {
-    return await this.userRepo.getByUserName(username);
+    return await this.userRepo.getByEmail(username);
   }
 }

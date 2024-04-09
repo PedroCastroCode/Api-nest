@@ -6,4 +6,10 @@ export class CreateVeiculoDto {
   placa: string;
 
   cor: string;
+
+  preco: number;
+
+  anoFabricacao: Date;
+
+  km: number;
 }

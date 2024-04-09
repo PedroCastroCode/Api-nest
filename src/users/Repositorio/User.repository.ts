@@ -6,8 +6,8 @@ export class UserTypeOrmRepository
   extends CrudRepositorio<User>
   implements IUserRepository
 {
-  async getByUserName(username: string) {
-    return await this.repository.findOne({ where: { username } });
+  async getByEmail(email: string) {
+    return await this.repository.findOne({ where: { email } });
   }
   entity: string = 'User';
 }

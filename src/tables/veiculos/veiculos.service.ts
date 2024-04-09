@@ -13,6 +13,9 @@ export class VeiculosService {
       createVeiculoDto.id_marca,
       createVeiculoDto.placa,
       createVeiculoDto.cor,
+      createVeiculoDto.preco,
+      createVeiculoDto.anoFabricacao,
+      createVeiculoDto.km,
       createVeiculoDto.id,
     );
     return await this.veiculosRepo.Create(newVeiculo);
@@ -32,6 +35,9 @@ export class VeiculosService {
       updateVeiculoDto.id_marca,
       updateVeiculoDto.placa,
       updateVeiculoDto.cor,
+      updateVeiculoDto.preco,
+      updateVeiculoDto.anoFabricacao,
+      updateVeiculoDto.km,
       id,
     );
     await this.veiculosRepo.update(newVeiculo);
