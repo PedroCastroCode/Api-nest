@@ -1,8 +1,17 @@
-import { registerDecorator, ValidationArguments, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
+import {
+  registerDecorator,
+  ValidationArguments,
+  ValidationOptions,
+  ValidatorConstraint,
+  ValidatorConstraintInterface,
+} from 'class-validator';
 
 @ValidatorConstraint({ name: 'isCPF', async: false })
 export class IsCPFConstraint implements ValidatorConstraintInterface {
   validate(cpf: string) {
+    if (!cpf) {
+      return false;
+    }
     cpf = cpf.replace(/[^\d]/g, ''); // Remove caracteres não numéricos
 
     if (cpf.length !== 11 || /^(\d)\1+$/g.test(cpf)) {
@@ -52,7 +61,10 @@ export function IsCPF(validationOptions?: ValidationOptions) {
     registerDecorator({
       target: object.constructor,
       propertyName: propertyName,
-      options: { ...validationOptions, message: 'CPF inválido, Por Favor, forneça um CPF válido.' },
+      options: {
+        ...validationOptions,
+        message: 'CPF inválido, Por Favor, forneça um CPF válido.',
+      },
       constraints: [],
       validator: IsCPFConstraint,
     });
